@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:troveapp/components/theme/sizes.dart';
+
+class HeaderFour extends StatelessWidget {
+  final String text;
+  final Color color;
+
+  HeaderFour(this.text, this.color);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontSize: textheadsize,
+      ),
+    );
+  }
+}
