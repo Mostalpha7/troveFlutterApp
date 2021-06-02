@@ -48,9 +48,15 @@ class AuthService {
     }
   }
 
-  Future<Map> loginService({String email, String password}) async {
+  Future<Map> loginService(
+      {String email, String password, String requestId}) async {
     try {
-      Map map = {'email': email, 'password': password};
+      Map map = {};
+      if (requestId != null) {
+        map = {'email': email, 'password': password, 'requestId': requestId};
+      } else {
+        map = {'email': email, 'password': password};
+      }
       var encodeBody = jsonEncode(map);
 
       Response response = await post(

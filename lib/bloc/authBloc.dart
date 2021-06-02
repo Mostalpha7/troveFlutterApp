@@ -39,12 +39,32 @@ class AuthBloc extends ChangeNotifier {
       email: email.trim(),
       password: password.trim(),
     );
+    print(loginRes);
 
     if (loginRes['success'] == null) {
       return throw loginRes['message'];
     } else {
-      this.email = email;
-      this.password = password;
+      this.email = email.trim();
+      this.password = password.trim();
+      this.twoFactoryRequestId = loginRes['data']['requestId'];
+      notifyListeners();
+      return loginRes['message'];
+    }
+  }
+
+  Future<String> resendOtp({String email, String password}) async {
+    Map loginRes = await authService.loginService(
+      email: email.trim(),
+      password: password.trim(),
+      requestId: this.twoFactoryRequestId,
+    );
+    print(loginRes);
+
+    if (loginRes['success'] == null) {
+      return throw loginRes['message'];
+    } else {
+      this.email = email.trim();
+      this.password = password.trim();
       this.twoFactoryRequestId = loginRes['data']['requestId'];
       notifyListeners();
       return loginRes['message'];

@@ -30,7 +30,7 @@ class _AppDateInputState extends State<AppDateInput> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-          width: screenWidth * 0.85,
+          width: screenWidth,
           height: 0.06 * screenHeight,
           decoration: BoxDecoration(
             color: secondaryColor,

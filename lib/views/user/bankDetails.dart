@@ -92,25 +92,23 @@ class _BankDetailsState extends State<BankDetails> {
     final userBloc = Provider.of<UserBloc>(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () {
-            FocusScopeNode currentFocus = FocusScope.of(context);
-            if (!currentFocus.hasPrimaryFocus) {
-              currentFocus.unfocus();
-            }
-          },
-          child: DecoratedBox(
-            position: DecorationPosition.background,
-            decoration: BoxDecoration(),
+      resizeToAvoidBottomInset: true,
+      body: ListView(
+        children: [
+          GestureDetector(
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 40),
               child: Form(
                 key: formKey,
                 autovalidate: _autovalidate,
-                child: ListView(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.only(left: 24.0, right: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     SmallText('VERIFY BANK DETAILS', altThemeColor),
                     SizedBox(height: largespacing),
@@ -265,12 +263,13 @@ class _BankDetailsState extends State<BankDetails> {
                         ],
                       ),
                     ),
+                    SizedBox(height: screenHeight * 0.4)
                   ],
                 ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -70,18 +70,15 @@ class _PasswordUpdateState extends State<PasswordUpdate> {
     );
 
     return Scaffold(
-      body: SafeArea(
-        child: DecoratedBox(
-          position: DecorationPosition.background,
-          decoration: BoxDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 40),
             child: Form(
               key: globalFormKey,
               autovalidate: _autovalidate,
-              child: ListView(
-                shrinkWrap: true,
-                padding: EdgeInsets.only(left: 24.0, right: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   SizedBox(height: largespacing),
                   SmallText('PASSWORD UPDATE', altThemeColor),
@@ -152,7 +149,8 @@ class _PasswordUpdateState extends State<PasswordUpdate> {
               ),
             ),
           ),
-        ),
+          SizedBox(height: screenHeight * 0.5)
+        ],
       ),
     );
   }

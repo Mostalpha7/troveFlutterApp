@@ -19,8 +19,8 @@ class Wallet extends StatelessWidget {
     screenHeight = size.height;
     screenWidth = size.width;
     return Scaffold(
-      body: SafeArea(
-        child: DecoratedBox(
+      body: ListView(children: [
+        DecoratedBox(
           position: DecorationPosition.background,
           decoration: BoxDecoration(),
           child: Padding(
@@ -113,25 +113,25 @@ class Wallet extends StatelessWidget {
                     HeaderThree('Portfolio Values', blackColor),
                     SizedBox(height: screenHeight * 0.009),
                     NormalText(
-                      'totalPortfolioVal: USD${authBloc.authUser['portfolioVals']['totalPortfolioVal']}',
+                      'Total Portfolio Val: USD${authBloc.authUser['portfolioVals']['totalPortfolioVal']}',
                       altColor,
                     ),
                     NormalText(
-                      'availablePortfolioVal: USD${authBloc.authUser['portfolioVals']['availablePortfolioVal']}',
+                      'Available Portfolio Val: USD${authBloc.authUser['portfolioVals']['availablePortfolioVal']}',
                       altColor,
                     ),
                     NormalText(
-                      'useablePortfolioVal: USD${authBloc.authUser['portfolioVals']['useablePortfolioVal']}',
+                      'Useable Portfolio Val: USD${authBloc.authUser['portfolioVals']['useablePortfolioVal']}',
                       altColor,
                     )
                   ],
                 ),
-                SizedBox(height: minispacing),
+                SizedBox(height: screenHeight * 0.12),
               ],
             ),
           ),
         ),
-      ),
+      ]),
     );
   }
 }
